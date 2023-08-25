@@ -1,6 +1,6 @@
 const { failed, success } = require("../utils/Reply");
 const ContactUs = require("../Models/ContactUs");
-// const sendEmail = require("../utils/Mail");
+const sendEmail = require("../utils/Mail");
 const { uppercaseFirst } = require("../utils/AccessorsAndMutators");
 
 // ? **************************************** Save the contact ************************************************ */
@@ -14,14 +14,15 @@ exports.save = async (req, res) => {
     const contactUs = new ContactUs(req.body);
     const save = await contactUs.save();
     if (save) {
-      //   await sendEmail(
-      //     req.body.email,
-      //     "Glad to hear from you! We'll be in touch soon",
-      //     "contact-us",
-      //     {
-      //       name: uppercaseFirst(req.body.first_name.replace(/^\s+|\s+$/gm, "")),
-      //     }
-      //   );
+      await sendEmail(
+        req.body.email,
+        "Glad to hear from you! We'll be in touch soon",
+        "contact-us",
+        {
+          name: uppercaseFirst(req.body.first_name.replace(/^\s+|\s+$/gm, "")),
+        },
+        false
+      );
       return success(
         res,
         `We are glad you're considering us. Our business team will get back to you within 24 hrs.`

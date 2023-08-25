@@ -4,15 +4,15 @@ const nodemailer = require("nodemailer");
 const expressMailerHbs = require("nodemailer-express-handlebars");
 const viewPath = path.resolve(__dirname, "../templates/emails/");
 
-const fromEmail = "no-reply@idsil.com";
+const fromEmail = process.env.NODE_APP_MAIL_USER;
 
 const transporter = nodemailer.createTransport({
-  host: "192.168.10.59",
-  port: 25,
+  host: process.env.NODE_APP_MAIL_HOST,
+  port: process.env.NODE_APP_MAIL_PORT,
   secure: false,
   auth: {
-    user: "no-reply@idsil.com",
-    pass: "Login@123",
+    user: process.env.NODE_APP_MAIL_USER,
+    pass: process.env.NODE_APP_MAIL_PASS,
   },
   tls: {
     rejectUnauthorized: false,
