@@ -22,38 +22,8 @@ exports.compareHash = (currentPassword, oldPassword) => {
 exports.apiKeyName = (value) => {
   const baseUrl = value.replace("/api/", "");
   switch (baseUrl) {
-    case "auth":
-      return process.env.NODE_APP_API_AUTH_KEY;
     case "contacts":
       return process.env.NODE_APP_API_KEY_CONTACT_US;
-    case "subscribers":
-      return process.env.NODE_APP_API_KEY_SUBSCRIBER;
-    case "departments":
-      return process.env.NODE_APP_API_KEY_DEPARTMENT;
-    case "referral":
-      return process.env.NODE_APP_API_KEY_REFERRAL;
-    case "referral-by":
-      return process.env.NODE_APP_API_KEY_REFERRAL;
-    case "opening":
-      return process.env.NODE_APP_API_KEY_OPENING;
-    case "blog-subscribe":
-      return process.env.NODE_APP_API_KEY_BLOG;
-    case "webinars":
-      return process.env.NODE_APP_API_WEBINAR_KEY;
-    case "applications":
-      return process.env.NODE_APP_API_APPLICATION_KEY;
-    case "jobs":
-      return process.env.NODE_APP_API_JOB_KEY;
-    case "countries":
-      return process.env.NODE_APP_API_COUNTRY_KEY;
-    case "cities":
-      return process.env.NODE_APP_API_CITY_KEY;
-    case "blood-donations":
-      return process.env.NODE_APP_API_CSR_BLOOD_DONATION_KEY;
-    case "volunteers":
-      return process.env.NODE_APP_API_VOLUNTEERS_KEY;
-    case "stages":
-      return process.env.NODE_APP_API_STAGE_KEY;
     default:
       return process.env.NODE_APP_API_KEY_USER;
   }

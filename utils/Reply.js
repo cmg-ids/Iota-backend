@@ -1,6 +1,6 @@
 // ? ************************** Failed method *************************** */
 exports.failed = (res, message) => {
-  return res.status(200).json({ status: "0", message: message });
+  return res.status(200).json({ status: false, message: message });
 };
 
 // ? ************************** Success method *************************** */
@@ -12,7 +12,7 @@ exports.success = (
   title = "",
   extra = []
 ) => {
-  let success = { status: "1", message: message };
+  let success = { status: true, message: message };
 
   if (data !== null) {
     success = { ...success, data: data };
